@@ -1,0 +1,9 @@
+.idea
+*.iml
+.project
+.settings/
+target/
+tags
+nb_jr_remoting.cfg
+transaction.log
+nbproject/
