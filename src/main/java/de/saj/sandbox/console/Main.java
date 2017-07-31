@@ -5,6 +5,7 @@ package de.saj.sandbox.console;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        new Processor().process();
+//        SwingUtilities.invokeLater(new MainRunnable());
+        new GenealogyView().run();
     }
 }
