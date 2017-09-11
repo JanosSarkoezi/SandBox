@@ -1,0 +1,278 @@
+{
+  "backbone": [
+    {
+      "title": "Organize Email",
+      "userTasks": [
+        {
+          "title": "Search Email",
+          "subTasks": [
+            {
+              "position": 1,
+              "done": false,
+              "title": "Search by Keyword",
+              "content": "As a ... I want to ... so that ...",
+              "information": {
+                "images": [
+                  "images/email.png"
+                ],
+                "links": [],
+                "todos": []
+              }
+            },
+            {
+              "position": 2
+            },
+            {
+              "position": 3,
+              "done": false,
+              "title": "Limit Search to one field",
+              "content": "As a ... I want to ... so that ...",
+              "information": {
+                "images": [
+                  "images/email.png"
+                ],
+                "links": [],
+                "todos": []
+              }
+            },
+            {
+              "position": 4,
+              "done": false,
+              "title": "Limit Search to 1+ fields",
+              "content": "As a ... I want to ... so that ...",
+              "information": {
+                "images": [
+                  "images/email.png"
+                ],
+                "links": [],
+                "todos": []
+              }
+            },
+            {
+              "position": 5,
+              "done": false,
+              "title": "Search attachments",
+              "content": "As a ... I want to ... so that ...",
+              "information": {
+                "images": [],
+                "links": [],
+                "todos": []
+              }
+            },
+            {
+              "position": 6,
+              "done": false,
+              "title": "Search subfolders",
+              "content": "As a ... I want to ... so that ...",
+              "information": {
+                "images": [],
+                "links": [],
+                "todos": []
+              }
+            }
+          ]
+        },
+        {
+          "title": "File Emails",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "Move Emails",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 2,
+              "title": "Create subfolders",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Manage Email",
+      "userTasks": [
+        {
+          "title": "Compose Email",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "Create and Send basic email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 2,
+              "title": "Send RFT email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "Send HTML email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4,
+              "title": "Set email priority",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 5,
+              "title": "Get address from contacts",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 6,
+              "title": "Send Attachments",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        },
+        {
+          "title": "Read Email",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "Open basic email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 2,
+              "title": "Open RFT email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "Open HTML email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4,
+              "title": "Open Attachments",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        },
+        {
+          "title": "Delete Email",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "Delete email",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "Empty Deleted Items",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Manage Calendar",
+      "userTasks": [
+        {
+          "title": "View Calendar",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "View list of appts",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 2,
+              "title": "View Monthly formats",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "View Daily formats",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 5,
+              "title": "View Weekly formats",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 6,
+              "title": "Search Calendar",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        },
+        {
+          "title": "Create Appt",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "Create basic appt",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 2,
+              "title": "Create RFT appt",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "Create HTML appt",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4,
+              "title": "Mandatory/Optional",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 5,
+              "title": "Get address from contacts",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 6,
+              "title": "Add Attachments",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        },
+        {
+          "title": "Update Appt",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "Update contents/location",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "Propose new time",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        },
+        {
+          "title": "View Appt",
+          "subTasks": [
+            {
+              "position": 1,
+              "title": "View Appt",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3,
+              "title": "Accept/Reject/Tentative",
+              "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 5,
+              "title": "View Attachments",
+              "content": "As a ... I want to ... so that ..."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

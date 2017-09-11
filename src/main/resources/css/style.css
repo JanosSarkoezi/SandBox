@@ -1,0 +1,60 @@
+div.note {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*padding-top: 10px;*/
+}
+
+div.backbone {
+    background-color: #FAEBD7;
+}
+
+div.usertask {
+    background-color: #F0FFF0;
+}
+
+div.subtask {
+    background-color: #FFFACD;
+}
+
+div.menu {
+    background-color: #F0E68C;
+    padding-bottom: 10px;
+}
+
+div.information {
+    position: absolute;
+    background-color: #F0E68C;
+    bottom: 10;
+    right: 10;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    cursor: pointer;
+}
+
+div.done {
+    position: absolute;
+    top: 10;
+    right: 10;
+    width: 20px;
+    height: 20px;
+}
+
+h1 {
+    padding-top: 5px;
+}
+
+h2 {
+    padding-top: 5px;
+}
+
+h3 {
+    padding-top: 5px;
+}
