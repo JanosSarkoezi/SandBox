@@ -39,25 +39,13 @@
               "position": 4,
               "done": false,
               "title": "Limit Search to 1+ fields",
-              "content": "As a ... I want to ... so that ...",
-              "information": {
-                "images": [
-                  "images/email.png"
-                ],
-                "links": [],
-                "todos": []
-              }
+              "content": "As a ... I want to ... so that ..."
             },
             {
               "position": 5,
               "done": false,
               "title": "Search attachments",
-              "content": "As a ... I want to ... so that ...",
-              "information": {
-                "images": [],
-                "links": [],
-                "todos": []
-              }
+              "content": "As a ... I want to ... so that ..."
             },
             {
               "position": 6,
@@ -65,7 +53,9 @@
               "title": "Search subfolders",
               "content": "As a ... I want to ... so that ...",
               "information": {
-                "images": [],
+                "images": [
+                  "images/email.png"
+                ],
                 "links": [],
                 "todos": []
               }
@@ -84,6 +74,18 @@
               "position": 2,
               "title": "Create subfolders",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 3
+            },
+            {
+              "position": 4
+            },
+            {
+              "position": 5
+            },
+            {
+              "position": 6
             }
           ]
         }
@@ -149,6 +151,12 @@
               "position": 4,
               "title": "Open Attachments",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 5
+            },
+            {
+              "position": 6
             }
           ]
         },
@@ -161,9 +169,21 @@
               "content": "As a ... I want to ... so that ..."
             },
             {
+              "position": 2
+            },
+            {
               "position": 3,
               "title": "Empty Deleted Items",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4
+            },
+            {
+              "position": 5
+            },
+            {
+              "position": 6
             }
           ]
         }
@@ -189,6 +209,9 @@
               "position": 3,
               "title": "View Daily formats",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4
             },
             {
               "position": 5,
@@ -246,9 +269,21 @@
               "content": "As a ... I want to ... so that ..."
             },
             {
+              "position": 2
+            },
+            {
               "position": 3,
               "title": "Propose new time",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4
+            },
+            {
+              "position": 5
+            },
+            {
+              "position": 6
             }
           ]
         },
@@ -261,14 +296,23 @@
               "content": "As a ... I want to ... so that ..."
             },
             {
-              "position": 3,
+              "position": 3
+            },
+            {
+              "position": 2,
               "title": "Accept/Reject/Tentative",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 4
             },
             {
               "position": 5,
               "title": "View Attachments",
               "content": "As a ... I want to ... so that ..."
+            },
+            {
+              "position": 6
             }
           ]
         }

@@ -41,6 +41,8 @@ import java.util.Map;
  */
 public class HtmlGenerator {
 
+    private int informationCounter = 0;
+
     private HtmlGenerator() {
     }
 
@@ -66,7 +68,6 @@ public class HtmlGenerator {
                                 )
                         )
                         .add(new Script().attribute("src", "lightbox2/js/lightbox-plus-jquery.js"))
-                        .add(new Script().content(createJqueryScript()))
                 ).newLine();
         // @formatter:on
 
@@ -78,9 +79,9 @@ public class HtmlGenerator {
         html.accept(userTaskVisitor);
         Tr userTaskTr = (Tr) userTaskVisitor.getElement();
 
-        FindVisitor bodyVisitor = new FindVisitor("tablebody");
-        html.accept(bodyVisitor);
-        Tbody tbody = (Tbody) bodyVisitor.getElement();
+        FindVisitor tablebodyVisitor = new FindVisitor("tablebody");
+        html.accept(tablebodyVisitor);
+        Tbody tbody = (Tbody) tablebodyVisitor.getElement();
 
         String content = getJson("email.json");
         StoryMapping storyMapping = new Gson().fromJson(content, StoryMapping.class);
@@ -89,15 +90,28 @@ public class HtmlGenerator {
         fillUserTaskTr(storyMapping, userTaskTr);
         fillSubTastTrs(storyMapping, tbody);
 
+        FindVisitor bodyVisitor = new FindVisitor(Body.class);
+        html.accept(bodyVisitor);
+        Body body = (Body) bodyVisitor.getElement();
+
+        body.add(new Script().content(createJqueryScript()));
+
         html.accept(new PrintVisitor());
     }
 
     private String createJqueryScript() {
-        return "$(document).ready(function() {\n" +
-                "    $('.information').click(function() {\n" +
-                "        $('.menu').slideToggle(\"fast\");\n" +
-                "    });\n" +
-                "});";
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("$(document).ready(function() {\n");
+
+        for (int i = 0; i < informationCounter; i++) {
+            buffer.append("    $('.a" + i + "').click(function() {\n");
+            buffer.append("        $('.b" + i + "').slideToggle(\"fast\");\n");
+            buffer.append("    });\n");
+        }
+
+        buffer.append("});");
+
+        return buffer.toString();
     }
 
     private String getJson(String fileName) throws URISyntaxException, IOException {
@@ -195,15 +209,16 @@ public class HtmlGenerator {
             // @formatter:on
 
             if (subTask.getInformation() != null) {
-                ElementComposite menuDiv = new Div().attribute("class", "menu")
+                ElementComposite menuDiv = new Div().attribute("class", "menu b" + informationCounter)
                         .attribute("style", "display: none;");
 
-                subTaskDiv.add(new Div().attribute("class", "information").content("i"))
+                subTaskDiv.add(new Div().attribute("class", "information a" + informationCounter).content("i"))
                         .add(menuDiv);
 
                 addImages(menuDiv, subTask);
                 addLinks(menuDiv, subTask);
                 addToDos(menuDiv, subTask);
+                ++informationCounter;
             }
 
             if (subTask.getDone() != null) {
