@@ -26,10 +26,21 @@ import de.saj.sandbox.console.sprint.SubTask;
 import de.saj.sandbox.console.sprint.UserTask;
 import de.saj.sandbox.console.visitor.FindVisitor;
 import de.saj.sandbox.console.visitor.PrintVisitor;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashMap;
@@ -47,11 +58,38 @@ public class HtmlGenerator {
     }
 
     public static void main(String[] args) throws Exception {
+        Options options = new Options();
+
+        Option input = new Option("i", "input", true, "input file path");
+        input.setRequired(true);
+        options.addOption(input);
+
+        Option output = new Option("o", "output", true, "output file");
+        output.setRequired(true);
+        options.addOption(output);
+
+        CommandLineParser parser = new DefaultParser();
+        HelpFormatter formatter = new HelpFormatter();
+        CommandLine cmd;
+
+        try {
+            cmd = parser.parse(options, args);
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+            formatter.printHelp("usm", options);
+
+            System.exit(1);
+            return;
+        }
+
+        String inputFilePath = cmd.getOptionValue("input");
+        String outputFilePath = cmd.getOptionValue("output");
+
         HtmlGenerator generator = new HtmlGenerator();
-        generator.generateHTML();
+        generator.generateHTML(inputFilePath, outputFilePath);
     }
 
-    private void generateHTML() throws IOException, URISyntaxException {
+    private void generateHTML(String inputFilePath, String outputFilePath) throws IOException, URISyntaxException {
         Html html = new Html();
 
         // @formatter:off
@@ -83,7 +121,7 @@ public class HtmlGenerator {
         html.accept(tablebodyVisitor);
         Tbody tbody = (Tbody) tablebodyVisitor.getElement();
 
-        String content = getJson("email.json");
+        String content = getJson(inputFilePath);
         StoryMapping storyMapping = new Gson().fromJson(content, StoryMapping.class);
 
         fillBackbondeTr(storyMapping, backboneTr);
@@ -96,7 +134,7 @@ public class HtmlGenerator {
 
         body.add(new Script().content(createJqueryScript()));
 
-        html.accept(new PrintVisitor());
+        html.accept(new PrintVisitor(new PrintStream(new File(outputFilePath))));
     }
 
     private String createJqueryScript() {
@@ -115,7 +153,8 @@ public class HtmlGenerator {
     }
 
     private String getJson(String fileName) throws URISyntaxException, IOException {
-        return new String(Files.readAllBytes(Paths.get(ClassLoader.getSystemResource(fileName).toURI())));
+        Path path = Paths.get(fileName);
+        return new String(Files.readAllBytes(path));
     }
 
     private void fillBackbondeTr(StoryMapping storyMapping, Tr backboneTr) {
