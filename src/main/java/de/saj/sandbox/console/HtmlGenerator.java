@@ -21,6 +21,7 @@ import de.saj.sandbox.console.element.Title;
 import de.saj.sandbox.console.element.Tr;
 import de.saj.sandbox.console.element.Ul;
 import de.saj.sandbox.console.sprint.BackBone;
+import de.saj.sandbox.console.sprint.Information;
 import de.saj.sandbox.console.sprint.StoryMapping;
 import de.saj.sandbox.console.sprint.SubTask;
 import de.saj.sandbox.console.sprint.UserTask;
@@ -37,7 +38,6 @@ import org.apache.commons.cli.ParseException;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -105,7 +105,9 @@ public class HtmlGenerator {
                                         .add(new Tr("userTask").newLine())
                                 )
                         )
-                        .add(new Script().attribute("src", "lightbox2/js/lightbox-plus-jquery.js"))
+                        .add(new Script().attribute("src", "js/jquery-1.12.4.js"))
+                        .add(new Script().attribute("src", "js/jquery-ui-1.12.4.js"))
+                        .add(new Script().attribute("src", "lightbox2/js/lightbox.js"))
                 ).newLine();
         // @formatter:on
 
@@ -138,18 +140,32 @@ public class HtmlGenerator {
     }
 
     private String createJqueryScript() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("$(document).ready(function() {\n");
+//        StringBuilder buffer = new StringBuilder();
+//        buffer.append("$(document).ready(function() {\n");
+//
+//        for (int i = 0; i < informationCounter; i++) {
+//            buffer.append("    $('.a").append(i).append("').click(function() {\n");
+//            buffer.append("        $('.b").append(i).append("').slideToggle(\"fast\");\n");
+//            buffer.append("    });\n");
+//        }
+//
+//        buffer.append("});");
+//
+//        return buffer.toString();
+        String jquery = "$(document).ready(function() {\n" +
+                "        $(document).ready(function() {\n" +
+                "            $('.information').click((ev) => {\n" +
+                "                let n = $(ev.target).next();\n" +
+                "                let v = n.attr('data-expanded') == 'true';\n" +
+                "                n.attr('data-expanded', !v);\n" +
+                "                $(n).position({\n" +
+                "                    of: $(n).parent()\n" +
+                "                });\n" +
+                "            });\n" +
+                "        });\n" +
+                "});";
 
-        for (int i = 0; i < informationCounter; i++) {
-            buffer.append("    $('.a" + i + "').click(function() {\n");
-            buffer.append("        $('.b" + i + "').slideToggle(\"fast\");\n");
-            buffer.append("    });\n");
-        }
-
-        buffer.append("});");
-
-        return buffer.toString();
+        return jquery;
     }
 
     private String getJson(String fileName) throws URISyntaxException, IOException {
@@ -247,30 +263,50 @@ public class HtmlGenerator {
             );
             // @formatter:on
 
-            if (subTask.getInformation() != null) {
-                ElementComposite menuDiv = new Div().attribute("class", "menu b" + informationCounter)
-                        .attribute("style", "display: none;");
+            handleInformation(subTask, subTaskDiv);
+            handleDone(subTask, subTaskDiv);
+        }
+    }
 
-                subTaskDiv.add(new Div().attribute("class", "information a" + informationCounter).content("i"))
-                        .add(menuDiv);
+    private void handleDone(SubTask subTask, ElementComposite subTaskDiv) {
+        if (subTask.getDone() != null) {
+            ElementComposite done = new Div().attribute("class", "done");
 
-                addImages(menuDiv, subTask);
-                addLinks(menuDiv, subTask);
-                addToDos(menuDiv, subTask);
-                ++informationCounter;
+            if (subTask.getDone()) {
+                done.attribute("style", "background-color: green;");
+            } else {
+                done.attribute("style", "background-color: red;");
             }
 
-            if (subTask.getDone() != null) {
-                ElementComposite done = new Div().attribute("class", "done");
+            subTaskDiv.add(done);
+        }
+    }
 
-                if (subTask.getDone()) {
-                    done.attribute("style", "background-color: green;");
-                } else {
-                    done.attribute("style", "background-color: red;");
-                }
+    private void handleInformation(SubTask subTask, ElementComposite subTaskDiv) {
+        Information information = subTask.getInformation();
+        if (information != null) {
+            ElementComposite menuDiv = new Div().attribute("class", "menu")
+                    .attribute("data-expanded", "false");
 
-                subTaskDiv.add(done);
+            String indicator = "";
+            if (!information.getImages().isEmpty()) {
+                indicator += "i";
             }
+
+            if (!information.getLinks().isEmpty()) {
+                indicator += "l";
+            }
+
+            if (!information.getTodos().isEmpty()) {
+                indicator += "t";
+            }
+
+            subTaskDiv.add(new Div().attribute("class", "information").content(indicator))
+                    .add(menuDiv);
+
+            addImages(menuDiv, subTask);
+            addLinks(menuDiv, subTask);
+            addToDos(menuDiv, subTask);
         }
     }
 

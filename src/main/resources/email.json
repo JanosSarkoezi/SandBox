@@ -28,10 +28,8 @@
               "title": "Limit Search to one field",
               "content": "As a ... I want to ... so that ...",
               "information": {
-                "images": [
-                  "images/email.png"
-                ],
-                "links": [],
+                "images": [],
+                "links": ["http://google.de"],
                 "todos": []
               }
             },
@@ -53,11 +51,9 @@
               "title": "Search subfolders",
               "content": "As a ... I want to ... so that ...",
               "information": {
-                "images": [
-                  "images/email.png"
-                ],
+                "images": [],
                 "links": [],
-                "todos": []
+                "todos": ["tests", "tests", "tests"]
               }
             }
           ]

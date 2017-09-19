@@ -23,6 +23,8 @@ div.subtask {
 div.menu {
     background-color: #F0E68C;
     padding-bottom: 10px;
+    padding-left: 10px;
+    z-index: 2;
 }
 
 div.information {
@@ -30,13 +32,14 @@ div.information {
     background-color: #F0E68C;
     bottom: 10;
     right: 10;
-    width: 20px;
+    width: 30px;
     height: 20px;
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
     text-align: center;
     cursor: pointer;
+    z-index: 9999;
 }
 
 div.done {
@@ -57,4 +60,17 @@ h2 {
 
 h3 {
     padding-top: 5px;
+}
+
+
+[data-expanded="false"] {
+	height:0;
+	overflow:hidden;
+	opacity:0;
+	
+}
+[data-expanded="true"] {
+	height: auto;
+	overflow: visible;
+	opacity:1;
 }
