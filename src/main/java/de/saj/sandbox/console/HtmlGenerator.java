@@ -52,8 +52,6 @@ import java.util.Map;
  */
 public class HtmlGenerator {
 
-    private int informationCounter = 0;
-
     private HtmlGenerator() {
     }
 
@@ -140,18 +138,6 @@ public class HtmlGenerator {
     }
 
     private String createJqueryScript() {
-//        StringBuilder buffer = new StringBuilder();
-//        buffer.append("$(document).ready(function() {\n");
-//
-//        for (int i = 0; i < informationCounter; i++) {
-//            buffer.append("    $('.a").append(i).append("').click(function() {\n");
-//            buffer.append("        $('.b").append(i).append("').slideToggle(\"fast\");\n");
-//            buffer.append("    });\n");
-//        }
-//
-//        buffer.append("});");
-//
-//        return buffer.toString();
         String jquery = "$(document).ready(function() {\n" +
                 "        $(document).ready(function() {\n" +
                 "            $('.information').click((ev) => {\n" +
